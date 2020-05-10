@@ -17,6 +17,21 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Rajdhani`,
+            variants: [`500`, `700`]
+          },
+          {
+            family: `Carter One`,
+            variants: [`400`]
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

@@ -9,17 +9,15 @@ exports.createPages = async ({ graphql, actions }) => {
       allSpellFullCsv {
         nodes {
           name
-          description
+          description_formatted,
           descriptor
           effect
           duration
           area
           spell_resistance
           id
-          short_description
           targets
           saving_throw
-          description_formatted
         }
       }
     }
@@ -30,7 +28,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: spellDetailTemplate,
       context: {
         name: node.name,
-        description: node.description,
         descriptor: node.descriptor,
         description_formatted: node.description_formatted,
         effect: node.effect,
@@ -38,9 +35,69 @@ exports.createPages = async ({ graphql, actions }) => {
         area: node.area,
         spell_resistance: node.spell_resistance,
         id: node.id,
-        short_description: node.short_description,
         targets: node.targets,
         saving_throw: node.saving_throw,
+      },
+    })
+  })
+
+  const classes = [
+    'sorcerer',
+    'wizard',
+    'cleric',
+    'druid',
+    'ranger',
+    'bard',
+    'paladin',
+    'alchemist',
+    'summoner',
+    'witch',
+    'inquisitor',
+    'oracle',
+    'antipaladin',
+    'magus',
+    'bloodrager',
+    'shaman',
+    'psychic',
+    'medium',
+    'mesmerist',
+    'occultist',
+    'spiritualist',
+    'skald',
+    'investigator',
+    'hunter'
+  ]
+
+  const spellListTemplate = path.resolve(`src/templates/spell-list.tsx`)
+
+  classes.forEach(async (_class) => {
+
+    const classResult = await graphql(`
+      query {
+        allSpellFullCsv(filter: {${_class}: {ne: "NULL"}}) {
+          nodes {
+            name
+            descriptor
+            effect
+            duration
+            area
+            spell_resistance
+            id
+            targets
+            saving_throw
+            short_description
+            ${_class}
+          }
+        }
+      }
+    `)
+    
+    createPage({
+      path: `/spells/${_class}`,
+      component: spellListTemplate,
+      context: {
+        class: _class,
+        spells: classResult.data.allSpellFullCsv.nodes
       },
     })
   })

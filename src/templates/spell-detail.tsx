@@ -1,34 +1,19 @@
 import React from "react"
+import { Heading, Text } from 'rebass'
+
+import Layout from '../components/Layout'
+import SpellTable from '../components/SpellTable'
 
 const SpellList = ({ pageContext }) => {
 
-  const aspects = {
-    caster:  ['effect', 'duration', 'range', 'area'],
-    target:  ['targets', 'saving_throw'],
-  }
+  
 
   return (
-    <>
-      <h1>{pageContext.name}</h1>
-      <table>
-        <tbody>
-          {aspects.caster.map(aspect => {
-            if(pageContext[aspect]) {
-              return (<tr key={`aspect-${aspect}`}><th>{aspect}</th><td>{pageContext[aspect]}</td></tr>)
-            }
-          })}
-        </tbody>
-
-        <tbody>
-          {aspects.target.map(aspect => {
-            if(pageContext[aspect]) {
-              return (<tr key={`aspect-${aspect}`}><th>{aspect.replace('_', '')}</th><td>{pageContext[aspect]}</td></tr>)
-            }
-          })}
-        </tbody>
-      </table>
-      <div dangerouslySetInnerHTML={{__html: pageContext.description_formatted}} />
-    </>
+    <Layout>
+      <Heading as='h1'>{pageContext.name}</Heading>
+      <SpellTable {...pageContext} />
+      <Text variant='body' dangerouslySetInnerHTML={{__html: pageContext.description_formatted}} />
+    </Layout>
   )
 }
 
