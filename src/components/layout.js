@@ -7,38 +7,58 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'emotion-theming'
 import { Box } from 'rebass'
 import { useStaticQuery, graphql } from "gatsby"
+import Footer from './Footer'
 
 import Header from "./header"
 
+const baseColors = {
+  cream: '#FEFAE6',
+  navy: '#12293F',
+  teal: '#71A6A3',
+  turquoise: '#32A6B8',
+  white: '#FAFEFF',
+}
+ 
+const colors = {
+  primary: baseColors.teal,
+  secondary: baseColors.cream,
+  tertiary: baseColors.white,
+  accent: baseColors.turquoise,
+  action: baseColors.turquoise,
+  inverted: baseColors.navy,
+  backgrounds: {
+    main: baseColors.navy,
+  }
+}
+
 const theme = {
   fonts: {
-    body: '"Rajdhani", Courier, Arial, system-ui, sans-serif',
-    heading: '"Carter One", Arial, sans-serif',
+    body: '"Signika", system-ui, sans-serif',
+    heading: '"IM Fell English SC", Arial, sans-serif',
     monospace: 'Menlo, monospace',
   },
   fontSizes: [
-    12, 14, 16, 18, 32, 48, 64
+    12, 14, 16, 18, 24, 32, 48, 64
   ],
-  colors: {
-    primary: '#101E2C',
-    secondary: '#7A7293',
-    accent: '#4A3A70',
-    action: '#2F1755',
-  },
+  colors,
   buttons: {
     primary: {
-      color: 'white',
       bg: 'primary',
+      color: 'inverted',
+      textTransform: 'uppercase',
     },
     outline: {
-      color: 'primary',
       bg: 'transparent',
-      boxShadow: 'inset 0 0 0 2px'
+      boxShadow: 'inset 0 0 0 2px',
+      color: 'primary',
+      textTransform: 'uppercase',
     },
   },
+  spacing: [0, 6, 12, 18, 24],
   text: {
     body: {
       color: 'primary',
@@ -48,12 +68,12 @@ const theme = {
       lineHeight: '1.4',
     },
     heading: {
-      color: 'accent',
-      fontSize: 4,
+      color: 'tertiary',
+      fontSize: 5,
       fontWeight: 400,
     },
     label: {
-      color: 'secondary',
+      color: 'accent',
       fontFamily: 'body',
       fontSize: 0,
       fontWeight: '700',
@@ -61,31 +81,61 @@ const theme = {
       textTransform: 'uppercase'
     },
     small: {
+      color: 'accent',
+      fontFamily: 'body',
+      fontSize: 0,
+      fontWeight: 400,
+    },
+    subHead: {
+      color: 'tertiary',
+      fontFamily: 'heading',
+      fontSize: 3,
+      fontWeight: 400,
+      textTransform: 'uppercase'
+    },
+    value: {
+      color: 'secondary',
       fontFamily: 'body',
       fontSize: 0,
       lineHeight: '1.4',
     },
-    subHead: {
-      color: 'accent',
-      fontSize: 3,
-      fontWeight: 400,
-    },
+    
   },
   variants: {
     linkButton: {
       bg: 'action',
+      border: '2px solid transparent',
       borderRadius: '3px',
-      color: 'white',
+      color: 'inverted',
+      display: 'inline-block',
       fontFamily: 'body',
-      fontSize: 1,
+      fontSize: 0,
       fontWeight: '700',
       px: 2,
       py: 1,
       textDecoration: 'none',
+      textTransform: 'uppercase',
+      '&:focus': {
+        borderColor: 'orange'
+      }
     }
-  }
+  },
 }
 
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    margin: 0;
+  }
+
+  body {
+    background: ${colors.backgrounds.main};
+    color: ${colors.primary};
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -100,13 +150,10 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Box as="main" p={3}>{children}</Box>
+      <Footer />
     </ThemeProvider>
   )
 }

@@ -14,11 +14,9 @@ export default function SpellList({ pageContext }) {
   
   return (
     <Layout>
-      <Heading as='h1'>{pageContext.class}</Heading>
-
+      <Heading as='h1' variant='heading'>Spells for: {pageContext.class}</Heading>
       <Box
         sx={{
-          bg: '#FBFAF6',
           display: 'grid',
           gap: 3,
         }}
@@ -26,17 +24,19 @@ export default function SpellList({ pageContext }) {
         {pageContext.spells.map(spell => (
           <Box
             key={`spell-${spell.id}`}
-            bg='white'
-            p={3}
+            mt={2}
+            pt={4}
             sx={{
-              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+              borderTop: '1px solid',
+              borderTopColor: 'accent',
             }}
           >
-            <Flex justifyContent='space-between'>
-              <Heading as='h2' variant='subHead'>{spell.name}</Heading>
-              <Text as='span' variant='label'>Level {spell[pageContext.class]}</Text>
+            <Flex alignItems='flex-end' justifyContent='space-between'>
+              <Heading as='h2' variant='subHead' lineHeight="0.75">{spell.name}</Heading>
+              <Text as='span' lineHeight='1' variant='label'>Level {spell[pageContext.class]}</Text>
             </Flex>
-            <Text variant='body' dangerouslySetInnerHTML={{__html: spell.short_description}} />
+            <Text my={3} variant='body' dangerouslySetInnerHTML={{__html: spell.short_description}} />
+            <Box  />
             <SpellTable {...spell} />
             <RebassLink as={Link} variant='linkButton' to={`/spells/all/${spell.id}`}>Full Spell Description</RebassLink>
           </Box>

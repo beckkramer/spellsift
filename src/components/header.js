@@ -2,33 +2,23 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
+import { Box, Text } from 'rebass'
+
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
+  <Box
+    as='header'
+    bg='accent'
+    p={3}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
+      <Text
+        variant='subHead'
+        color='inverted'
+        m={0}
+      >
+        
           {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+      </Text>
+  </Box>
 )
 
 Header.propTypes = {

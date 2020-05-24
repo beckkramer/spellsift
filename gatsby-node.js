@@ -1,5 +1,5 @@
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
+const { PLAYER_CLASSES } = require('constants')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -18,6 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
           id
           targets
           saving_throw
+          source
         }
       }
     }
@@ -37,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
         id: node.id,
         targets: node.targets,
         saving_throw: node.saving_throw,
+        source: node.source,
       },
     })
   })
@@ -91,13 +93,17 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `)
+
+    const spellsSortedByLevel = classResult.data.allSpellFullCsv.nodes.sort((a,b) => {
+      return Number(a[_class]) - Number(b[_class])
+    })
     
     createPage({
       path: `/spells/${_class}`,
       component: spellListTemplate,
       context: {
         class: _class,
-        spells: classResult.data.allSpellFullCsv.nodes
+        spells: spellsSortedByLevel,
       },
     })
   })

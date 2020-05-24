@@ -28,27 +28,26 @@ const SpellTable = (props: PropsT) => {
   }
 
   return (
-    <Box as='table' my={2}>
+    <Box as='table' my={3}>
       <Box as='tbody' pb={2}>
         {aspects.caster.map(aspect => {
           if(props[aspect]) {
             return (
               <tr key={`aspect-${aspect}`}>
                 <Text as='th' variant='label' textAlign='left'>{aspect}</Text>
-                <Text as='td' variant='small' pl={2} verticalAlign='top'>{props[aspect]}</Text>
+                <Text as='td' variant='value' pl={2} verticalAlign='top'>{props[aspect]}</Text>
               </tr>
             )
           }
         })}
       </Box>
-
-      <Box as='tbody'>
+      <Box as='tbody' mt={3}>
         {aspects.target.map(aspect => {
           if(props[aspect]) {
             return (
               <tr key={`aspect-${aspect}`}>
                 <Text as='th' variant='label' textAlign='left'>{aspect.replace('_', ' ')}</Text>
-                <Text as='td' variant='small' pl={2} verticalAlign='top'>{props[aspect]}</Text>
+                <Text as='td' variant='value' pl={2} verticalAlign='top'>{props[aspect]}</Text>
               </tr>
             )
           }

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Spellsift`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
@@ -21,12 +21,11 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Rajdhani`,
-            variants: [`500`, `700`]
+            family: 'Signika',
+            variants: [`400`, `600`, `700`]
           },
           {
-            family: `Carter One`,
-            variants: [`400`]
+            family: 'IM+Fell+English+SC'
           },
         ],
       },

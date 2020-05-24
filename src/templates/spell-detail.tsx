@@ -13,6 +13,7 @@ const SpellList = ({ pageContext }) => {
       <Heading as='h1'>{pageContext.name}</Heading>
       <SpellTable {...pageContext} />
       <Text variant='body' dangerouslySetInnerHTML={{__html: pageContext.description_formatted}} />
+      <Text as="p" variant="small">Source: {pageContext.source}</Text>
     </Layout>
   )
 }
