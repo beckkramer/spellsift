@@ -11,6 +11,8 @@ export default function SpellList({ pageContext }) {
     caster:  ['effect', 'duration', 'range', 'area'],
     target:  ['targets', 'saving_throw'],
   }
+
+  console.log(pageContext)
   
   return (
     <Layout>

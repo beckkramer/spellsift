@@ -1,0 +1,140 @@
+[{
+  "bard": [{
+    "lvl": 0,
+    "spells": [
+      {
+        "name": "Detect Magic",
+        "id": 138
+      },
+      {
+        "name": "Ghost Sound",
+        "id": 234
+      },
+      {
+        "name": "Lullaby",
+        "id": 320
+      },
+      {
+        "name": "Sift",
+        "id": 882
+      },
+      {
+        "name": "Unwitting Ally",
+        "id": 922
+      }
+    ]
+  },{
+    "lvl": 1,
+    "spells": [
+      {
+        "name": "Chord of Shards",
+        "id": 1010
+      },
+      {
+        "name": "Innocence",
+        "id": 813
+      },
+      {
+        "name": "Saving Finale",
+        "id": 870
+      }
+    ]
+  }],
+  "sorcerer": [{
+    "lvl": 0,
+    "spells": [
+      {
+        "name": "Mage Hand",
+        "id": 322
+      },
+      {
+        "name": "Message",
+        "id": 351
+      },
+      {
+        "name": "Open/Close",
+        "id": 371
+      },
+      {
+        "name": "Resize Shadow",
+        "id": ""
+      },
+      {
+        "name": "Scoop",
+        "id": 1212
+      },
+      {
+        "name": "Shadow Bite",
+        "id": ""
+      },
+      {
+        "name": "Touch of Fatigue",
+        "id": 571
+      }
+    ]
+  },{
+    "lvl": 1,
+    "spells": [
+      {
+        "name": "Charm Person",
+        "id": 68
+      },
+      {
+        "name": "Ear-Piercing Scream",
+        "id": 1045
+      },
+      {
+        "name": "Heightened Awareness",
+        "id": 1923
+      },
+      {
+        "name": "Illusion of Calm",
+        "id": 1340
+      },
+      {
+        "name": "Shadow Hands",
+        "id": ""
+      },
+      {
+        "name": "Sleep",
+        "id": 495
+      }
+    ]
+  },{
+    "lvl": 2,
+    "spells": [
+      {
+        "name": "Blur",
+        "id": 52
+      },
+      {
+        "name": "Cat's Grace",
+        "id": 62
+      },
+      {
+        "name": "Invisibility",
+        "id": 298
+      },
+      {
+        "name": "Sonic Scream",
+        "id": 1969
+      }
+    ]
+  },{
+    "lvl": 3,
+    "spells": [
+      {
+        "name": "Invisibility Sphere",
+        "id": 302
+      },
+      {
+        "name": "Raging Rubble",
+        "id": 1542
+      },
+      {
+        "name": "Suggestion",
+        "id": 526
+      }
+    ]
+  }]
+}]

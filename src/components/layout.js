@@ -32,6 +32,7 @@ const colors = {
   inverted: baseColors.navy,
   backgrounds: {
     main: baseColors.navy,
+    alt: baseColors.white,
   }
 }
 
@@ -56,6 +57,13 @@ const theme = {
       boxShadow: 'inset 0 0 0 2px',
       color: 'primary',
       textTransform: 'uppercase',
+    },
+  },
+  forms: {
+    select: {
+      bg: 'backgrounds.alt',
+      borderRadius: '2px',
+      color: 'inverted',
     },
   },
   spacing: [0, 6, 12, 18, 24],

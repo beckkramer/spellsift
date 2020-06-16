@@ -1,5 +1,4 @@
 const path = require('path')
-const { PLAYER_CLASSES } = require('constants')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -19,6 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
           targets
           saving_throw
           source
+          spell_level
         }
       }
     }
@@ -39,40 +39,23 @@ exports.createPages = async ({ graphql, actions }) => {
         targets: node.targets,
         saving_throw: node.saving_throw,
         source: node.source,
+        spell_level: node.spell_level,
       },
     })
   })
 
-  const classes = [
-    'sorcerer',
-    'wizard',
-    'cleric',
-    'druid',
-    'ranger',
-    'bard',
-    'paladin',
-    'alchemist',
-    'summoner',
-    'witch',
-    'inquisitor',
-    'oracle',
-    'antipaladin',
-    'magus',
-    'bloodrager',
-    'shaman',
-    'psychic',
-    'medium',
-    'mesmerist',
-    'occultist',
-    'spiritualist',
-    'skald',
-    'investigator',
-    'hunter'
-  ]
+  const gameTermsResults = await graphql(`
+    query {
+      gameTerms {
+        playerClasses
+      }
+    }
+  `)
 
   const spellListTemplate = path.resolve(`src/templates/spell-list.tsx`)
 
-  classes.forEach(async (_class) => {
+  // A full spell list by class
+  gameTermsResults.data.gameTerms.playerClasses.forEach(async (_class) => {
 
     const classResult = await graphql(`
       query {

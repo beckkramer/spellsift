@@ -1344,6 +1344,12 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@rebass/forms@^4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@rebass/forms/-/forms-4.0.6.tgz#19a3af64f855baa65dec65aecadda5cd95a09dd7"
+  dependencies:
+    reflexbox "^4.0.6"
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
